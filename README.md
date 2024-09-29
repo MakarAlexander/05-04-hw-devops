@@ -158,9 +158,28 @@ docker compose up -d
 Скачайте docker образ ```hashicorp/terraform:latest``` и скопируйте бинарный файл ```/bin/terraform``` на свою локальную машину, используя dive и docker save.
 Предоставьте скриншоты  действий .
 
+#### Решение
+```sh
+docker pull hashicorp/terraform:latest
+```
+
+```sh
+docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest hashicorp/terraform
+```
+![1-6](./05-04-6.png)
+
+```sh
+docker save hashicorp/terraform -o image.tar
+```
+Извлекаем к себе на машину все слои образа и через tar разархивируем данные из нужного нам слоя.
+
 ## Задача 6.1
 Добейтесь аналогичного результата, используя docker cp.  
 Предоставьте скриншоты  действий .
+
+#### Решение
+
+![1-7](./05-04-7.png)
 
 ## Задача 6.2 (**)
 Предложите способ извлечь файл из контейнера, используя только команду docker build и любой Dockerfile.  
